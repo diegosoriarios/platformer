@@ -1,0 +1,338 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Sprites/FreePlatformerNA/Foreground/TilesExamples.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/FreePlatformerNA/Foreground/Trees.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Magic-Cliffs-Environment/PNG/tileset.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 16 )
+
+[node name="JungleTileSet" type="Node"]
+
+[node name="0" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 0, 384 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 32, 32, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="0/StaticBody2D"]
+visible = false
+position = Vector2( 16, 16 )
+shape = SubResource( 1 )
+
+[node name="1" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 64, 384 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 64, 32, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="1/StaticBody2D"]
+visible = false
+position = Vector2( 16, 16 )
+shape = SubResource( 1 )
+
+[node name="2" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 128, 384 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 96, 32, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2/StaticBody2D"]
+visible = false
+position = Vector2( 16, 16 )
+shape = SubResource( 1 )
+
+[node name="3" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 0, 448 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 32, 64, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="3/StaticBody2D"]
+visible = false
+position = Vector2( 16, 16 )
+shape = SubResource( 1 )
+
+[node name="4" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 64, 448 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 64, 64, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="4/StaticBody2D"]
+visible = false
+position = Vector2( 16, 16 )
+shape = SubResource( 1 )
+
+[node name="5" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 128, 448 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 96, 64, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="5/StaticBody2D"]
+visible = false
+position = Vector2( 16, 16 )
+shape = SubResource( 1 )
+
+[node name="6" type="Sprite" parent="."]
+position = Vector2( 128, 448 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 96, 64, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="7" type="Sprite" parent="."]
+position = Vector2( 128, 448 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 96, 64, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="8" type="Sprite" parent="."]
+position = Vector2( 192, 384 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 32, 32, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="9" type="Sprite" parent="."]
+position = Vector2( 256, 384 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 64, 32, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="10" type="Sprite" parent="."]
+position = Vector2( 192, 448 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 32, 64, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="11" type="Sprite" parent="."]
+position = Vector2( 256, 448 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 64, 64, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="12" type="Sprite" parent="."]
+position = Vector2( 192, 512 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 32, 96, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="13" type="Sprite" parent="."]
+position = Vector2( 256, 512 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 64, 96, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="14" type="Sprite" parent="."]
+position = Vector2( 320, 384 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 160, 0, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="15" type="Sprite" parent="."]
+position = Vector2( 384, 384 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 192, 0, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="16" type="Sprite" parent="."]
+position = Vector2( 320, 448 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 160, 32, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="17" type="Sprite" parent="."]
+position = Vector2( 384, 448 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 192, 32, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="18" type="Sprite" parent="."]
+position = Vector2( 448, 448 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 224, 32, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="19" type="Sprite" parent="."]
+position = Vector2( 320, 512 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 160, 64, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="20" type="Sprite" parent="."]
+position = Vector2( 384, 512 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 192, 64, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="21" type="Sprite" parent="."]
+position = Vector2( 320, 576 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 160, 96, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="22" type="Sprite" parent="."]
+position = Vector2( 384, 576 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 192, 96, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="23" type="Sprite" parent="."]
+position = Vector2( 0, 544 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 576, 186, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="24" type="Sprite" parent="."]
+position = Vector2( 32, 544 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 608, 186, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="25" type="Sprite" parent="."]
+position = Vector2( 0, 608 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 640, 186, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="26" type="Sprite" parent="."]
+position = Vector2( 32, 608 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 672, 186, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="27" type="Sprite" parent="."]
+position = Vector2( 64, 608 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 704, 186, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
