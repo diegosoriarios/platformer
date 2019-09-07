@@ -1,10 +1,10 @@
 [gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Sprites/Player/Jump3.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Sprites/Player/Idle0.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Sprites/Player/Jump0.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Sprites/Player/Jump1.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/Player/Idle0.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Player/Jump0.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/Player/Jump1.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/Player/Jump3.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Sprites/Player/Jump4.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Sprites/Player/Run0.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Sprites/Player/Run1.png" type="Texture" id=8]
@@ -17,15 +17,10 @@
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "fall",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ), ExtResource( 6 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "jump",
 "speed": 5.0
@@ -33,6 +28,11 @@ animations = [ {
 "frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "run",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "fall",
 "speed": 5.0
 } ]
 
@@ -49,6 +49,24 @@ __meta__ = {
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "fall"
+
+[node name="Label" type="Label" parent="Sprite"]
+margin_left = 256.0
+margin_top = -160.0
+margin_right = 296.0
+margin_bottom = -146.0
+
+[node name="Label2" type="Label" parent="Sprite"]
+margin_left = 256.0
+margin_top = -128.0
+margin_right = 296.0
+margin_bottom = -114.0
+
+[node name="Label3" type="Label" parent="Sprite"]
+margin_left = 256.0
+margin_top = -96.0
+margin_right = 296.0
+margin_bottom = -82.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )

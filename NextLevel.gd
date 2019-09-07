@@ -7,4 +7,5 @@ func _physics_process(delta):
 	
 	for body in bodies:
 		if body.name == "Player":
+			global.double_jump_active = !global.double_jump_active
 			get_tree().change_scene(next_level)

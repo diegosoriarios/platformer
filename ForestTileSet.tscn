@@ -168,3 +168,39 @@ __meta__ = {
 visible = false
 position = Vector2( 16, 16 )
 shape = SubResource( 1 )
+
+[node name="9" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 192, 384 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 160, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="9"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="9/StaticBody2D"]
+visible = false
+position = Vector2( 16, 16 )
+shape = SubResource( 1 )
+
+[node name="10" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 192, 448 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 32, 160, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="10"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="10/StaticBody2D"]
+visible = false
+position = Vector2( 16, 16 )
+shape = SubResource( 1 )
