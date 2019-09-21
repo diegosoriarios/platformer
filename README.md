@@ -9,3 +9,4 @@ A platform game using Godot
 - [ ] Criar fases
 - Adicionar mecanicas
   - [ ] Corda
+  - [ ] Dash
