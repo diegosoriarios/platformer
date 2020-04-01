@@ -11,21 +11,15 @@ var jumps = 0
 export(String, FILE, "*.tscn") var next_level
 var gun = 0
 var take_damage setget set_take_damage
-var timer
 var frame = 0
 
 var Bullet = preload('res://Objects/Bullet.tscn')
 
-func _process(delta):	
+func _process(delta):
 	if take_damage:
 		frame += delta * 10
-		print(frame)
 		$Sprite.visible = false if int(frame) % 2 == 0 else true
-		timer = Timer.new()
-		timer.wait_time = 1
-		timer.connect("timeout", self, "on_timer_timeout")
-		add_child(timer)
-		timer.start()
+		if (int(frame) >= 10): on_timer_timeout()
 
 func _physics_process(delta):
 	motion.y += gravity
@@ -85,13 +79,11 @@ func _physics_process(delta):
 
 
 func _ready():
-	print("Motion ", motion)
 	if global.xPos != 0 and global.yPos != 0:
 		motion.x = global.xPos
 		motion.y = global.yPos
 		get_node(".").motion.x = global.xPos
 		get_node(".").motion.y = global.yPos
-		print("Motion ", motion)
 		
 	motion = move_and_slide(motion, UP)
 
@@ -112,13 +104,9 @@ func shoot():
 		get_parent().add_child(bullet3)
 
 func on_timer_timeout():
-	if timer and timer.time_left != 0:
-		remove_child(timer)
-		$Sprite.visible = true
-		frame = 0
-		set_take_damage(false)
-		timer.stop()
-		timer = null
+	$Sprite.visible = true
+	frame = 0
+	set_take_damage(false)
 
 func set_take_damage(new_value):
 	take_damage = new_value

@@ -40,4 +40,12 @@ func shoot():
 			get_parent().add_child(bullet)
 
 func on_timer_timeout():
-	allow_attack = true
+	if timer and timer.time_left != 0:
+		allow_attack = true
+		remove_child(timer)
+		timer.stop()
+		timer = null
+
+
+func hit():
+	pass

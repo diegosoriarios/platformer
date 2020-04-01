@@ -19,6 +19,7 @@ func _physics_process(delta):
 			collision.collider.hit()
 	
 	var bodies = $Area2D.get_overlapping_bodies()
+	var areas = $Area2D.get_overlapping_areas()
 	
 	for body in bodies:
 		if body.name == "TileMap":
@@ -27,6 +28,15 @@ func _physics_process(delta):
 			var p = body.get_global_position() - self.get_global_position()
 			explosion.position -= p
 			body.add_child(explosion)
+			body.hit()
+			queue_free()
+	
+	for area in areas:
+		if area.is_in_group("enemy"):
+			var p = area.get_global_position() - self.get_global_position()
+			explosion.position -= p
+			area.add_child(explosion)
+			area.hit()
 			queue_free()
 
 func _on_VisibilityNotifier2D_screen_exited():
