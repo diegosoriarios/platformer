@@ -9,22 +9,46 @@ var acceleration = 50
 var max_speed = 200
 var jumps = 0
 export(String, FILE, "*.tscn") var next_level
+var gun = 0
+var take_damage setget set_take_damage
+var timer
+var frame = 0
+
+var Bullet = preload('res://Objects/Bullet.tscn')
+
+func _process(delta):	
+	if take_damage:
+		frame += delta * 10
+		print(frame)
+		$Sprite.visible = false if int(frame) % 2 == 0 else true
+		timer = Timer.new()
+		timer.wait_time = 1
+		timer.connect("timeout", self, "on_timer_timeout")
+		add_child(timer)
+		timer.start()
 
 func _physics_process(delta):
 	motion.y += gravity
 	var friction = false
 	global.time += delta
 	
+	$Muzzle.look_at(get_global_mouse_position())
+	
+	if Input.is_action_just_pressed("shoot"):
+		shoot()
+	
 	if Input.is_action_pressed("ui_right"):
 		motion.x = min(motion.x + acceleration, max_speed)
 		
 		$Sprite.play("run")
 		$Sprite.flip_h = false
+		$Muzzle.position.x = 10
 	elif Input.is_action_pressed("ui_left"):
 		motion.x = max(motion.x - acceleration, -max_speed)
 		
 		$Sprite.play("run")
 		$Sprite.flip_h = true
+		$Muzzle.position.x = 5
 	else:
 		$Sprite.play("idle")
 		friction = true
@@ -53,11 +77,11 @@ func _physics_process(delta):
 	$Sprite/Label2.text = str(global.deaths)
 	$Sprite/Label3.text = str(global.totalTime)
 	
-	if global.time >= global.totalTime:
-		global.time = 0
-		global.deaths += 1
-		global.totalTime = (global.deaths + 1) * 10
-		get_tree().reload_current_scene()
+	#if global.time >= global.totalTime:
+	#	global.time = 0
+	#	global.deaths += 1
+	#	global.totalTime = (global.deaths + 1) * 10
+	#	get_tree().reload_current_scene()
 
 
 func _ready():
@@ -70,3 +94,31 @@ func _ready():
 		print("Motion ", motion)
 		
 	motion = move_and_slide(motion, UP)
+
+func shoot():
+	if gun == 0:
+		var bullet = Bullet.instance()
+		bullet.start($Muzzle.global_position, $Muzzle.rotation, self)
+		get_parent().add_child(bullet)
+	elif gun == 1:
+		var bullet1 = Bullet.instance()
+		var bullet2 = Bullet.instance()
+		var bullet3 = Bullet.instance()
+		bullet1.start($Muzzle.global_position, $Muzzle.rotation, self)
+		bullet2.start($Muzzle.global_position, $Muzzle.rotation + deg2rad(15), self)
+		bullet3.start($Muzzle.global_position, $Muzzle.rotation - deg2rad(15), self)
+		get_parent().add_child(bullet1)
+		get_parent().add_child(bullet2)
+		get_parent().add_child(bullet3)
+
+func on_timer_timeout():
+	if timer and timer.time_left != 0:
+		remove_child(timer)
+		$Sprite.visible = true
+		frame = 0
+		set_take_damage(false)
+		timer.stop()
+		timer = null
+
+func set_take_damage(new_value):
+	take_damage = new_value
