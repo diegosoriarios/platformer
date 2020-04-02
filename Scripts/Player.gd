@@ -12,6 +12,9 @@ export(String, FILE, "*.tscn") var next_level
 var gun = 0
 var take_damage setget set_take_damage
 var frame = 0
+var crouch = false
+var stand
+var face_right = true
 
 var Bullet = preload('res://Objects/Bullet.tscn')
 
@@ -28,8 +31,19 @@ func _physics_process(delta):
 	
 	$Muzzle.look_at(get_global_mouse_position())
 	
+	if crouch:
+		$CollisionShape2D.scale.y = stand.y / 2
+	else:
+		$CollisionShape2D.scale.y = stand.y
+	
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
+	
+	if Input.is_action_pressed("ui_down"):
+		crouch = true
+	
+	if Input.is_action_just_released("ui_down"):
+		crouch = false
 	
 	if Input.is_action_pressed("ui_right"):
 		motion.x = min(motion.x + acceleration, max_speed)
@@ -37,16 +51,24 @@ func _physics_process(delta):
 		$Sprite.play("run")
 		$Sprite.flip_h = false
 		$Muzzle.position.x = 10
+		$Area2D/CollisionShape2D.position.x = 8.5
+		face_right = true
 	elif Input.is_action_pressed("ui_left"):
 		motion.x = max(motion.x - acceleration, -max_speed)
 		
 		$Sprite.play("run")
 		$Sprite.flip_h = true
 		$Muzzle.position.x = 5
+		$Area2D/CollisionShape2D.position.x = -13.5
+		face_right = false
 	else:
 		$Sprite.play("idle")
 		friction = true
-		
+	
+	if global.has_wings:
+		if Input.is_action_pressed("ui_up"):
+			motion.y = jump_force
+	
 	if is_on_floor():
 		jumps = 0
 		if Input.is_action_just_pressed("ui_up"):
@@ -76,6 +98,21 @@ func _physics_process(delta):
 	#	global.deaths += 1
 	#	global.totalTime = (global.deaths + 1) * 10
 	#	get_tree().reload_current_scene()
+	
+	var bodies = $Area2D.get_overlapping_bodies()
+	
+	if global.wall_jump:
+		for body in bodies:
+			if body.name == "TileMap":
+				if Input.is_action_just_pressed("ui_up"):
+					motion.y = jump_force * .7
+					if face_right:
+						motion.x -= 300
+					else:
+						motion.x += 300
+					jumps += 1
+				if friction == true:
+					motion.x = lerp(motion.x, 0, 0.2)
 
 
 func _ready():
@@ -86,6 +123,8 @@ func _ready():
 		get_node(".").motion.y = global.yPos
 		
 	motion = move_and_slide(motion, UP)
+	
+	stand = $CollisionShape2D.scale
 
 func shoot():
 	if gun == 0:
