@@ -1,6 +1,7 @@
 extends Node2D
 
 export(Array, PackedScene) var enemies = []
+export var time = 20
 
 var frame = 0
 var create_enemy = true
@@ -11,7 +12,7 @@ func _ready():
 func _process(delta):
 	frame += delta * 10
 	
-	if int(frame) % 20 == 0 and int(frame) != 0:
+	if int(frame) % int(time) == 0 and int(frame) != 0:
 		create_enemy = true
 	
 	if create_enemy:

@@ -1,13 +1,18 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Objects/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/JungleDirtTileSet.tres" type="TileSet" id=2]
 [ext_resource path="res://NextLevel.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Objects/Enemies/Enemy4.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/Enemies/Enemy12.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Spwaner.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Objects/Enemies/Fly1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Objects/BrokenWall.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Objects/Spikes.tscn" type="PackedScene" id=8]
 
 [node name="World" type="Node"]
+
+[node name="Enemy12" parent="." instance=ExtResource( 4 )]
+position = Vector2( 673, 583.2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 832, 608 )
@@ -34,7 +39,8 @@ position = Vector2( 1203.5, 739.5 )
 scale = Vector2( 0.5, 0.5 )
 enemies = [ ExtResource( 6 ) ]
 
-[node name="Enemy4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 664.1, 551.2 )
-collision_layer = 2048
-collision_mask = 2048
+[node name="BrokenWall" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1058.3, 513.2 )
+
+[node name="Spikes" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1026.1, 703.3 )

@@ -38,6 +38,12 @@ func _physics_process(delta):
 			area.add_child(explosion)
 			area.hit()
 			queue_free()
+		if area.is_in_group("can_destroy"):
+			var p = area.get_global_position() - self.get_global_position()
+			explosion.position -= p
+			area.add_child(explosion)
+			area.hit()
+			queue_free()
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
