@@ -59,7 +59,7 @@ func _physics_process(delta):
 		$Sprite.play("run")
 		$Sprite.flip_h = true
 		$Muzzle.position.x = 5
-		$Area2D/CollisionShape2D.position.x = -13.5
+		$Area2D/CollisionShape2D.position.x = -17
 		face_right = false
 	else:
 		$Sprite.play("idle")
@@ -116,6 +116,8 @@ func _physics_process(delta):
 
 
 func _ready():
+	var startPosition = get_parent().find_node("initPos").position
+	position = startPosition
 	if global.xPos != 0 and global.yPos != 0:
 		motion.x = global.xPos
 		motion.y = global.yPos
