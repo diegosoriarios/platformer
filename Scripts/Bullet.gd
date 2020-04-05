@@ -4,12 +4,23 @@ var speed = 500
 var velocity = Vector2()
 
 var explosion = preload("res://Objects/Explosion.tscn").instance()
+var camera
+var init_pos
 
 func start(pos, dir, ignore):
 	rotation = dir
 	add_collision_exception_with(ignore)
 	position = pos
+	init_pos = pos
 	velocity = Vector2(speed, 0).rotated(rotation)
+
+func _process(delta):
+	camera = get_parent().find_node("Player").find_node("Camera2D")
+	#print(camera.get_viewport().get_visible_rect().size.x)
+	#print(position.x)
+	if position.x > (camera.get_viewport().get_visible_rect().size.x/2) + init_pos.x or position.x < init_pos.x - (camera.get_viewport().get_visible_rect().size.x/2):
+		queue_free()
+		print('aqui')
 
 func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
