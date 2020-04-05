@@ -7,8 +7,10 @@ var speed = 200
 var run_speed = 25
 var velocity = Vector2.ZERO
 var player
+var hp = int(rand_range(15, 20))
 
 func _ready():
+	randomize()
 	player = get_parent().get_node("Player")
 	velocity = position.direction_to(player.position) * speed
 	
@@ -25,4 +27,7 @@ func _process(delta):
 			body.set_take_damage(true)
 
 func hit():
-	pass
+	hp -= 1
+	
+	if hp == 0:
+		queue_free()

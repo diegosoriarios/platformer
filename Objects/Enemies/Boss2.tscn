@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
-[ext_resource path="res://Scripts/Enemies/Enemy4.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Enemies/Boss2.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 59.9999, 59 )
@@ -9,16 +9,17 @@ extents = Vector2( 59.9999, 59 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 71.4999, 71 )
 
-[node name="Enemy4" type="KinematicBody2D" groups=[
+[node name="Boss2" type="KinematicBody2D" groups=[
 "enemy",
 ]]
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 __meta__ = {
-"_editor_description_": "Enemy Follow Player and Shoot"
+"_editor_description_": "Enemy Shoot Up
+"
 }
 
 [node name="icon" type="Sprite" parent="."]
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

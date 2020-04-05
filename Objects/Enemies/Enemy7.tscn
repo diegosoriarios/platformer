@@ -13,6 +13,9 @@ extents = Vector2( 71.4999, 71 )
 "enemy",
 ]]
 script = ExtResource( 2 )
+__meta__ = {
+"_editor_description_": "Enemy Dash Vertical"
+}
 
 [node name="icon" type="Sprite" parent="."]
 texture = ExtResource( 1 )

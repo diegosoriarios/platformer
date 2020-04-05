@@ -1,7 +1,7 @@
 extends Area2D
 
 var next_level = [
-	"res://Levels/" + '2' + ".tscn",
+	"res://Levels/" + '1' + ".tscn",
 	"res://Levels/" + '2' + ".tscn"
 ]
 

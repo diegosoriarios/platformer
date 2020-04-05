@@ -5,9 +5,10 @@ var timer
 var allow_attack = true
 var direction = 0
 export var bullets = 1
+var hp = int(rand_range(15, 20))
 
 func _ready():
-	pass # Replace with function body.
+	randomize()
 	
 func _process(delta):
 	var player = get_parent().get_node("Player").get_position()
@@ -15,6 +16,11 @@ func _process(delta):
 		direction = 1
 	else:
 		direction = 3
+	
+	if player.x > position.x:
+		position.x += 2
+	elif player.x < position.x:
+		position.x -= 2
 	
 	if allow_attack:
 		shoot()
@@ -46,5 +52,7 @@ func on_timer_timeout():
 		timer.stop()
 		timer = null
 
-func pass():
-	pass
+func hit():
+	hp -= 1
+	if hp == 0:
+		queue_free()
