@@ -6,18 +6,26 @@ var allow_attack = true
 var direction = 0
 export var bullets = 1
 var hp = int(rand_range(15, 20))
+var can_attack = false
 
 func _ready():
 	randomize()
 	
 func _process(delta):
-	var player = get_parent().get_node("Player").get_position()
-	if player.x < self.position.x:
+	#var player = get_parent().get_node("Player").get_position()
+	var player = get_parent().get_node("Player")
+	if player.get_position().x < self.position.x:
 		direction = 1
 	else:
 		direction = 0
 	
-	if allow_attack:
+	if player.find_node("Camera2D").get_viewport().get_visible_rect().size.x/2 + player.position.x > position.x:
+		can_attack = true
+	if position.x < player.position.x - player.find_node("Camera2D").get_viewport().get_visible_rect().size.x/2:
+		can_attack = false
+
+	
+	if allow_attack and can_attack:
 		shoot()
 		allow_attack = false
 		
