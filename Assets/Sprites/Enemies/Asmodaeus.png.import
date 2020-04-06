@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/New Piskel-1.png.png-ed0408c14fd0f4989f6d1d0b273351c4.stex"
+path="res://.import/Asmodaeus.png-3ae7cde4ba8628741f837926e81a2329.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Enemies/New Piskel-1.png.png"
-dest_files=[ "res://.import/New Piskel-1.png.png-ed0408c14fd0f4989f6d1d0b273351c4.stex" ]
+source_file="res://Assets/Sprites/Enemies/Asmodaeus.png"
+dest_files=[ "res://.import/Asmodaeus.png-3ae7cde4ba8628741f837926e81a2329.stex" ]
 
 [params]
 

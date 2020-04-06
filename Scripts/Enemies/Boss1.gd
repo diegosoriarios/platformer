@@ -10,13 +10,15 @@ var hp = 50
 var motion = Vector2()
 const UP = Vector2.ZERO
 var gravity = 10
+var yPos
 
 func _ready():
-	pass # Replace with function body.
+	yPos = position.y
 	
 func _process(delta):
 	var player = get_parent().get_node("Player")
 	$Area2D.look_at(player.get_position())
+	position.y = yPos
 	
 	frame += delta * 10
 	

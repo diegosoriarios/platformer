@@ -20,7 +20,6 @@ func _process(delta):
 	#print(position.x)
 	if position.x > (camera.get_viewport().get_visible_rect().size.x/2) + init_pos.x or position.x < init_pos.x - (camera.get_viewport().get_visible_rect().size.x/2):
 		queue_free()
-		print('aqui')
 
 func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
