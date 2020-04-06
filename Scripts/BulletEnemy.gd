@@ -1,9 +1,8 @@
 extends KinematicBody2D
 
-var speed = 500
 var velocity = Vector2()
 
-func start(pos, dir, ignore):
+func start(pos, dir, ignore, speed = 500):
 	rotation = dir
 	add_collision_exception_with(ignore)
 	position = pos
