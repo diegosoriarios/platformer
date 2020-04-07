@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/Lava.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15.9375, 15.875 )
+
+[sub_resource type="CanvasItemMaterial" id=2]
+blend_mode = 1
 
 [node name="Lava" type="Node2D"]
 script = ExtResource( 1 )
@@ -14,5 +17,6 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
+material = SubResource( 2 )
 color = Color( 1, 0.423529, 0, 1 )
 polygon = PoolVector2Array( -16, -16, 16, -16, 16, 16, -16, 16 )

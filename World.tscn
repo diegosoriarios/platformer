@@ -1,8 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Objects/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/JungleDirtTileSet.tres" type="TileSet" id=2]
 [ext_resource path="res://Objects/Lava.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/Door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/Chave.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+fog_enabled = true
+fog_sun_color = Color( 0.764706, 0, 0, 1 )
+glow_enabled = true
+glow_blend_mode = 0
+glow_bicubic_upscale = true
 
 [node name="World" type="Node"]
 
@@ -44,3 +54,15 @@ z_index = -1
 position = Vector2( 816.772, -602.818 )
 scale = Vector2( 10, 6 )
 z_index = -1
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Chave" parent="Node" instance=ExtResource( 5 )]
+position = Vector2( 1061.96, -562.586 )
+
+[node name="Door" parent="Node" instance=ExtResource( 4 )]
+position = Vector2( 1650.28, -241.404 )
+scale = Vector2( 0.5, 1.26 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )

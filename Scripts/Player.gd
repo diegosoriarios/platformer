@@ -58,7 +58,7 @@ func _physics_process(delta):
 		
 		$Sprite.play("run")
 		$Sprite.flip_h = true
-		$Muzzle.position.x = 5
+		$Muzzle.position.x = -18
 		$Area2D/CollisionShape2D.position.x = -17
 		face_right = false
 	else:
@@ -151,3 +151,6 @@ func on_timer_timeout():
 
 func set_take_damage(new_value):
 	take_damage = new_value
+
+func hit():
+	pass
