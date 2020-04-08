@@ -10,7 +10,6 @@ extents = Vector2( 16, 16 )
 [node name="JungleTileSet" type="Node"]
 
 [node name="0" type="Sprite" parent="."]
-editor/display_folded = true
 position = Vector2( 0, 384 )
 texture = ExtResource( 1 )
 centered = false
@@ -28,7 +27,6 @@ position = Vector2( 16, 16 )
 shape = SubResource( 1 )
 
 [node name="1" type="Sprite" parent="."]
-editor/display_folded = true
 position = Vector2( 64, 384 )
 texture = ExtResource( 1 )
 centered = false
@@ -46,7 +44,6 @@ position = Vector2( 16, 16 )
 shape = SubResource( 1 )
 
 [node name="2" type="Sprite" parent="."]
-editor/display_folded = true
 position = Vector2( 128, 384 )
 texture = ExtResource( 1 )
 centered = false
@@ -64,7 +61,6 @@ position = Vector2( 16, 16 )
 shape = SubResource( 1 )
 
 [node name="3" type="Sprite" parent="."]
-editor/display_folded = true
 position = Vector2( 0, 448 )
 texture = ExtResource( 1 )
 centered = false
@@ -82,7 +78,6 @@ position = Vector2( 16, 16 )
 shape = SubResource( 1 )
 
 [node name="4" type="Sprite" parent="."]
-editor/display_folded = true
 position = Vector2( 64, 448 )
 texture = ExtResource( 1 )
 centered = false
@@ -100,7 +95,6 @@ position = Vector2( 16, 16 )
 shape = SubResource( 1 )
 
 [node name="5" type="Sprite" parent="."]
-editor/display_folded = true
 position = Vector2( 128, 448 )
 texture = ExtResource( 1 )
 centered = false
