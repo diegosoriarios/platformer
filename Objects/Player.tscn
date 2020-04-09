@@ -90,3 +90,12 @@ texture = ExtResource( 13 )
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 8.5, 0 )
 shape = SubResource( 3 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+visible = false
+rotation = -1.5708
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Polygon2D" type="Polygon2D" parent="RayCast2D"]
+scale = Vector2( 1.00257, 0.835915 )
+polygon = PoolVector2Array( 0, 0, 0, 70, 10, 70, 0, 0 )

@@ -15,6 +15,7 @@ var frame = 0
 var crouch = false
 var stand
 var face_right = true
+var stabbing = false
 
 var Bullet = preload('res://Objects/Bullet.tscn')
 
@@ -23,6 +24,15 @@ func _process(delta):
 		frame += delta * 10
 		$Sprite.visible = false if int(frame) % 2 == 0 else true
 		if (int(frame) >= 10): on_timer_timeout()
+	
+	if stabbing:
+		frame += delta * 10
+		
+		if (int(frame) > 5):
+			$RayCast2D.enabled = false
+			$RayCast2D.visible = false
+			frame = 0
+			stabbing = false
 
 func _physics_process(delta):
 	motion.y += gravity
@@ -130,10 +140,18 @@ func _ready():
 
 func shoot():
 	if gun == 0:
+		stabbing = true
+		$RayCast2D.enabled = true
+		$RayCast2D.visible = true
+		
+		var coll = $RayCast2D.get_collider()
+		if $RayCast2D.is_colliding() and coll.is_in_group("enemy"):
+			coll.hit()
+	elif gun == 1:
 		var bullet = Bullet.instance()
 		bullet.start($Muzzle.global_position, $Muzzle.rotation, self)
 		get_parent().add_child(bullet)
-	elif gun == 1:
+	elif gun == 2:
 		var bullet1 = Bullet.instance()
 		var bullet2 = Bullet.instance()
 		var bullet3 = Bullet.instance()
