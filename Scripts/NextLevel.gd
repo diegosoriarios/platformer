@@ -13,6 +13,5 @@ func _physics_process(delta):
 			global.double_jump_active = !global.double_jump_active
 			next_level.shuffle()
 			var first = next_level.front()
-			print(first)
 			#var level = first.instance()
 			get_tree().change_scene(first)

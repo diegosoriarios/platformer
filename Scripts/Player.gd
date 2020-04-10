@@ -17,12 +17,15 @@ var stand
 var face_right = true
 var stabbing = false
 var animation = 0
+var is_jumping
+
+
 
 var Bullet = preload('res://Objects/Bullet.tscn')
 
 func _process(delta):
-	animation += .25
-	if int(animation) == 4:
+	animation += .15
+	if int(animation) == 8:
 		animation = 0
 	
 	$Sprite.frame = int(animation)
@@ -35,9 +38,10 @@ func _process(delta):
 	if stabbing:
 		frame += delta * 10
 		
-		if (int(frame) > 5):
+		if (int(frame) > 3):
 			$RayCast2D.enabled = false
 			$RayCast2D.visible = false
+			$AnimationPlayer.stop()
 			frame = 0
 			stabbing = false
 
@@ -62,17 +66,31 @@ func _physics_process(delta):
 	if Input.is_action_just_released("ui_down"):
 		crouch = false
 	
+	if !is_jumping: $Sprite.play("idle")
+	
+	if Input.is_action_just_released("ui_right") or Input.is_action_just_released("ui_left"):
+		$Sprite.play("idle")
+	
 	if Input.is_action_pressed("ui_right"):
-		motion.x = min(motion.x + acceleration, max_speed)
-		
+		motion.x = min(motion.x + acceleration, max_speed)	
 		$Sprite.flip_h = true
-		$Muzzle.position.x = 10
-		$Area2D/CollisionShape2D.position.x = 8.5
+		$Muzzle/icon.flip_h = false
+		$Muzzle/icon.flip_v = false
+		if !is_jumping: $Sprite.play("run")
+		#$RayCast2D.rotation = 180
+		$RayCast2D/Weapon.flip_h = false
+		$Muzzle.position.x = 18
+		$Area2D/CollisionShape2D.position.x = 18.5
 		face_right = true
 	elif Input.is_action_pressed("ui_left"):
 		motion.x = max(motion.x - acceleration, -max_speed)
 	
+		if !is_jumping: $Sprite.play("run")
 		$Sprite.flip_h = false
+		$Muzzle/icon.flip_h = false
+		$Muzzle/icon.flip_v = true
+		$RayCast2D.rotation = 180
+		$RayCast2D/Weapon.flip_h = true
 		$Muzzle.position.x = -18
 		$Area2D/CollisionShape2D.position.x = -17
 		face_right = false
@@ -84,8 +102,12 @@ func _physics_process(delta):
 			motion.y = jump_force
 	
 	if is_on_floor():
+		#$Sprite.play("idle")
+		is_jumping = false
 		jumps = 0
 		if Input.is_action_just_pressed("ui_up"):
+			$Sprite.play("jump")
+			is_jumping = true
 			motion.y = jump_force
 			jumps += 1
 		if friction == true:
@@ -93,6 +115,8 @@ func _physics_process(delta):
 	else:
 		if Input.is_action_just_pressed("ui_up") and jumps < 2 and global.double_jump_active == true:
 			motion.y = jump_force
+			is_jumping = true
+			$Sprite.play("jump")
 			jumps += 1
 		if friction == true:
 			motion.x = lerp(motion.x, 0, 0.05)
@@ -126,6 +150,7 @@ func _physics_process(delta):
 
 
 func _ready():
+	$Sprite.play("idle")
 	var startPosition = get_parent().find_node("initPos").position
 	position = startPosition
 	if global.xPos != 0 and global.yPos != 0:
@@ -144,9 +169,10 @@ func shoot():
 		$RayCast2D.enabled = true
 		$RayCast2D.visible = true
 		
+		$AnimationPlayer.play("Attack")
+		
 		var coll = $RayCast2D.get_collider()
-		if $RayCast2D.is_colliding() and coll.is_in_group("enemy"):
-			coll.hit()
+		check_colision(coll)
 	elif gun == 1:
 		var bullet = Bullet.instance()
 		bullet.start($Muzzle.global_position, $Muzzle.rotation, self)
@@ -172,3 +198,8 @@ func set_take_damage(new_value):
 
 func hit():
 	pass
+
+func check_colision(coll):
+	if $RayCast2D.is_colliding() and coll.is_in_group("enemy"):
+		print(coll.name)
+		coll.hit()

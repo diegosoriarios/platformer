@@ -98,6 +98,24 @@ shape = SubResource( 1 )
 [node name="LightOccluder2D" type="LightOccluder2D" parent="4"]
 occluder = SubResource( 2 )
 
+[node name="11" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 193.931, 509.341 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 160, 160, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="11"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="11/StaticBody2D"]
+visible = false
+position = Vector2( 16, 16 )
+shape = SubResource( 1 )
+
 [node name="5" type="Sprite" parent="."]
 position = Vector2( 128, 448 )
 texture = ExtResource( 1 )

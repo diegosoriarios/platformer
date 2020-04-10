@@ -58,7 +58,6 @@ func on_timer_timeout():
 
 func hit():
 	hp -= 1
-	print(hp)
 	
 	if hp == 0:
 		queue_free()
