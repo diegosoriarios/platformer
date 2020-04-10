@@ -26,4 +26,12 @@ func _process(delta):
 func hit():
 	hp -= 1
 	if hp == 0:
+		var file = "res://Assets/Sprites/Blood/" + str(int(rand_range(0, 43))) + ".png"
+		var texture = load(file)
+		print(texture)
+		var sprite = Sprite.new()
+		sprite.set_texture(texture)
+		sprite.position = position
+		sprite.z_index = -3
+		get_parent().add_child(sprite)
 		queue_free()

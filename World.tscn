@@ -71,4 +71,5 @@ scale = Vector2( 0.5, 1.26 )
 environment = SubResource( 1 )
 
 [node name="Walker" parent="." instance=ExtResource( 8 )]
-position = Vector2( 838.063, 703.713 )
+position = Vector2( 836.649, 732.704 )
+scale = Vector2( 0.5, 0.5 )

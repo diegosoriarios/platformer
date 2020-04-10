@@ -9,17 +9,24 @@ var acceleration = 50
 var max_speed = 200
 var jumps = 0
 export(String, FILE, "*.tscn") var next_level
-var gun = 0
+var gun = 1
 var take_damage setget set_take_damage
 var frame = 0
 var crouch = false
 var stand
 var face_right = true
 var stabbing = false
+var animation = 0
 
 var Bullet = preload('res://Objects/Bullet.tscn')
 
 func _process(delta):
+	animation += .25
+	if int(animation) == 4:
+		animation = 0
+	
+	$Sprite.frame = int(animation)
+	
 	if take_damage:
 		frame += delta * 10
 		$Sprite.visible = false if int(frame) % 2 == 0 else true
@@ -58,21 +65,18 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_right"):
 		motion.x = min(motion.x + acceleration, max_speed)
 		
-		$Sprite.play("run")
-		$Sprite.flip_h = false
+		$Sprite.flip_h = true
 		$Muzzle.position.x = 10
 		$Area2D/CollisionShape2D.position.x = 8.5
 		face_right = true
 	elif Input.is_action_pressed("ui_left"):
 		motion.x = max(motion.x - acceleration, -max_speed)
-		
-		$Sprite.play("run")
-		$Sprite.flip_h = true
+	
+		$Sprite.flip_h = false
 		$Muzzle.position.x = -18
 		$Area2D/CollisionShape2D.position.x = -17
 		face_right = false
 	else:
-		$Sprite.play("idle")
 		friction = true
 	
 	if global.has_wings:
@@ -90,10 +94,6 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("ui_up") and jumps < 2 and global.double_jump_active == true:
 			motion.y = jump_force
 			jumps += 1
-		if motion.y < 0:
-			$Sprite.play("jump")
-		else:
-			$Sprite.play("fall")
 		if friction == true:
 			motion.x = lerp(motion.x, 0, 0.05)
 	

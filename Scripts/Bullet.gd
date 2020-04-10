@@ -18,8 +18,7 @@ func _process(delta):
 	camera = get_parent().find_node("Player").find_node("Camera2D")
 	#print(camera.get_viewport().get_visible_rect().size.x)
 	#print(position.x)
-	if position.x > (camera.get_viewport().get_visible_rect().size.x/2) + init_pos.x or position.x < init_pos.x - (camera.get_viewport().get_visible_rect().size.x/2):
-		queue_free()
+	
 
 func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
