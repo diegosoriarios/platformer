@@ -1,0 +1,10 @@
+[gd_scene format=2]
+
+[node name="Stairs" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+rotation = -0.00191067
+polygon = PoolVector2Array( 0, 0, 32, 0, 0, -32 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PoolVector2Array( 0, 0, 32, 0, 0, -32 )

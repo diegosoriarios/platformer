@@ -14,6 +14,7 @@ var timer = 0
 var frames = 0
 var detonat = false
 var VoD = 5
+var texture
 
 class Fragmentation:
 	var old
@@ -45,8 +46,11 @@ class Fragmentation:
 		return new
 
 func img():
-	for n in range(25): 
-		obj.append(objNode.instance())
+	for n in range(25):
+		var node = objNode.instance()
+		node.set_texture(texture)
+		print(node)
+		obj.append(node)
 		obj[n].set_frame(n)
 		add_child(obj[n])
 	
@@ -67,7 +71,7 @@ func explosion():
 			if drops.size() < obj.size():
 				var n = drops.size()
 				var drop = Fragmentation.new(obj[n].get_position().x, obj[n].get_position().y)
-				drop.move(randf() * 4-2, randf()*(-2)-15)
+				drop.move(randf() * 2-2, randf()*(-2)-15)
 				drops.push_front(drop)
 		for i in range(drops.size()):
 			drops[i].move(0, GRAVITY)
@@ -96,3 +100,6 @@ func _process(delta):
 
 func active():
 	detonat = true
+
+func change_texture(tex):
+	texture = tex

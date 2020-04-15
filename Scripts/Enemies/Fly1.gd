@@ -43,6 +43,7 @@ func hit():
 		
 		var explosion = Explosion.instance()
 		explosion.scale = scale
+		explosion.change_texture($icon.get_texture())
 		explosion.global_position = global_position
 		get_parent().add_child(explosion)
 		explosion.active()
