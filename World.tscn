@@ -83,6 +83,14 @@ position = Vector2( 856.589, 677.549 )
 position = Vector2( 926.5, 192.5 )
 scale = Vector2( 4.2, 4 )
 
+[node name="Stairs3" parent="." instance=ExtResource( 9 )]
+position = Vector2( -193.75, -959.75 )
+scale = Vector2( 4.2, 4 )
+
+[node name="Stairs4" parent="." instance=ExtResource( 9 )]
+position = Vector2( -514.777, -1083.49 )
+scale = Vector2( 8.00158, 5.12998 )
+
 [node name="Stairs2" parent="." instance=ExtResource( 9 )]
 position = Vector2( 865.5, 192.5 )
 scale = Vector2( -4.08, 4 )
